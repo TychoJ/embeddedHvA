@@ -3,7 +3,7 @@
 #include <time.h>
 #include <sys/time.h>
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char *argv[]) {
 	char *fileName;
 	char *log;
 
