@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 		return EXIT_FAILURE;
 	}
 	
-	char time[BUF_TIME] = asctime(localtime(&t));
+	char *time = asctime(localtime(&t));
 	char *ptr = strchr(time, '\n');
 	time[ptr - time] = '\0';
 
