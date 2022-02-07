@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include <sys/time.h>
+
+#define BUF_TIME
 
 int main(int argc, char *argv[]) {
 	char *fileName;
@@ -29,7 +32,11 @@ int main(int argc, char *argv[]) {
 		return EXIT_FAILURE;
 	}
 	
-	fprintf(file, "%s:\t%s\n", asctime(localtime(&t)), log);
+	char time[BUF_TIME] = asctime(localtime(&t));
+	char *ptr = strchr(time, '\n');
+	time[ptr - time] = '\0';
+
+	fprintf(file, "%s:\t%s\n", time, log);
 
 	fclose(file);
 
