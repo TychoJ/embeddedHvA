@@ -23,7 +23,8 @@ int main(int argc, char *argv[]) {
 	fileName = argv[1];
 	log	= argv[2];
 	
-	if (file =  fopen(fileName, "a") == NULL) {
+	file =  fopen(fileName, "a");
+	if (file == NULL) {
 		printf("Something went wrong");
 		return EXIT_FAILURE;
 	}
