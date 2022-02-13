@@ -141,22 +141,14 @@ uint8_t Log::openFile() {
 	this->setCompletePath();
 	printf("file = %s\n", this->completePath);
 
-#if defined(__linux__) || defined(__FreeBSD__)
-
-	struct stat st = {0};
-
-	if (stat(this->path, &st) == -1) {
+	printf("Creating a directory\n");
     	mkdir(this->path, 0744);
-	}
-
-#else
-
-	CreateDirectory(this->path, NULL);
-
-#endif	
+	printf("created a drirectory\n");
 	
 	this->f = fopen(this->completePath, "a");
 	
+	printf("opened the file\n");
+
 	if (this->f == NULL) {
 		printf("Failed to open file. error %d\n", errno);
 		perror(errorString);
@@ -164,6 +156,7 @@ uint8_t Log::openFile() {
 		printf("how\n");
 		return 1;
 	}
+	printf("returning\n");
 	return 0;
 }
 
@@ -182,6 +175,9 @@ int8_t Log::log(char *str) {
 	char *time = asctime(localtime(&t));
 	strtok(time, "\n");
 	this->openFile();
-	fprintf(this->f, "%s:\t%s\n", time, str);
+	printf("started writing to the file\n");
+	fprintf(this->f, "Time:\tString\n");
+	printf("ended writing to the file\n");
 	fclose(this->f);
+	printf("closed the file\n");
 }
