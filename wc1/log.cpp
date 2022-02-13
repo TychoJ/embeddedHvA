@@ -75,9 +75,9 @@ Log::Log(char *name, char *path, char *extension) {
 
 Log::~Log() {
 	free(this->completePath);
-	free(this->path);
+	//free(this->path);
 	free(this->name);
-	free(this->extension);
+	//free(this->extension);
 }
 
 uint8_t Log::setPath(char *path) {
@@ -175,19 +175,10 @@ int8_t Log::log(char *str) {
 	char *time = asctime(localtime(&t));
 	strtok(time, "\n");
 	this->openFile();
+	if (this->f == NULL) printf("This is a problem\n");
 	printf("started writing to the file\n");
 
-	uint16_t len = strlen(time);
-	for (uint16_t i = 0; i < len; i++) {
-		fputc(*time+i ,this->f);
-	}
-
-	fputc('\t', this->f);
-
-	len = strlen(str);
-	for (uint16_t i = 0; i < len; i++) {
-		fputc(*str+i ,this->f);
-	}
+	fprintf(this->f, "%s\t%s\n", time, str);
 	
 	printf("ended writing to the file\n");
 	fclose(this->f);
