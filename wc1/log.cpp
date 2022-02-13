@@ -122,10 +122,14 @@ uint8_t Log::setCompletePath() {
 	this->completePath = (char *)malloc(sizeof(char) * len);
 	if (this->completePath == NULL) return 1;
 
+	printf("1\n");
 	strcpy(this->completePath, this->path);
+	printf("2\n");
 	strcat(this->completePath, this->name);
+	printf("3\n");
 	strcat(this->completePath, this->extension);
-	
+	printf("4\n");
+
 	return 0;
 }
 
@@ -134,18 +138,8 @@ uint8_t Log::openFile() {
 	printf("name = %s\n", name);
 	printf("ext  = %s\n", this->extension);
 
-
 	this->setCompletePath();
 	printf("file = %s\n", this->completePath);
-
-	//if ((this->f = fopen(this->completePath, "r"))) {
-	//	if ( (this->f = fopen(this->completePath, "w")) == NULL) {
-	//		printf("Failed to open file. error %d\n");
-	//		perror(errorString);
-   	//		printf("%s\n", errorString);
-	//	}
-	//	fclose(this->f);
-	//}	
 
 #if defined(__linux__) || defined(__FreeBSD__)
 
@@ -186,12 +180,6 @@ int8_t Log::log(char *str) {
     t = tv.tv_sec;
 
 	char *time = asctime(localtime(&t));
-	//printf("hi \n");
-	//char *ptr;
-	//ptr = strchr(time, '\n');
-	//printf("hi \n");
-	//time[ptr - time] = '\0';
-	//printf("hi \n");
 	strtok(time, "\n");
 	this->openFile();
 	fprintf(this->f, "%s:\t%s\n", time, str);
