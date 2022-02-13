@@ -2,8 +2,8 @@
 #include "log.hpp"
 
 int main(void) {
-	Log logi("logiFromTheForLoop", "testCppLogger");
-	//Log logi("testExample");
+	//Log logi("logiFromTheForLoop", "testCppLogger");
+	Log logi("testExample");
 	//Log logii("logii", "testCppLoger");
 	char log[4096];
 
