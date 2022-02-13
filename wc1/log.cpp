@@ -176,7 +176,19 @@ int8_t Log::log(char *str) {
 	strtok(time, "\n");
 	this->openFile();
 	printf("started writing to the file\n");
-	fprintf(this->f, "Time:\tString\n");
+
+	uint16_t len = strlen(time);
+	for (uint16_t i = 0; i < len; i++) {
+		fputc(*time+i ,this->f);
+	}
+
+	fputc('\t', this->f);
+
+	len = strlen(str);
+	for (uint16_t i = 0; i < len; i++) {
+		fputc(*str+i ,this->f);
+	}
+	
 	printf("ended writing to the file\n");
 	fclose(this->f);
 	printf("closed the file\n");
