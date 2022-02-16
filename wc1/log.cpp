@@ -18,6 +18,8 @@
 #include <windows.h>
 #include <fileapi.h>
 
+#endif
+
 // MSVC defines this in winsock2.h!?
 typedef struct timeval {
     long tv_sec;
