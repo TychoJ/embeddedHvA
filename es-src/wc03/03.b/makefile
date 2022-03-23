@@ -1,7 +1,7 @@
 TARGET = main
-LIBS = ~/hva_libraries/bcm2835/src ~/hva_libraries/bcm2835/src/bcm2835.c -fpermissive -lbcm2835
+LIBS = 
 CC = g++
-CFLAGS = -Wall
+CFLAGS = -Wall -g
 
 .PHONY: default all clean
 
