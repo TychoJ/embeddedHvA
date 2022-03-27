@@ -1,0 +1,32 @@
+1 check line for comment
+2 check line for command
+3 check line for variable
+
+
+if line does not start with comment continue
+
+if line starts with command return execution string
+
+// hallo dit progamm....
+led red 2
+button onRed 3
+button quit 4
+
+if (button on) {
+    red on
+}
+else red off
+
+while (quit off) {
+
+}
+
+
+
+--------------------------
+
+JUMP <index>
+OUTSET <PIN_NUMBER>
+OUTCLR <PIN_NUMBER>
+IN <PIN_NUMBER>  // retrieves input value of <PIN_NUMBER>
+EQUEL <VAL0> <VAL1>
